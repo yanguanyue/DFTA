@@ -1,10 +1,10 @@
-# Skin Lesion Image Generation and Evaluation - DFTA
+# Skin Lesion Image Generation and Evaluation - DFTA 🏥
 
 This repository presents **DFTA (Dual Flow Transformation Architecture)**, a novel skin lesion image generation method. It provides a comprehensive framework for skin lesion image generation, evaluation, and downstream task validation using the HAM10000 dataset. The framework includes a complete pipeline for training, generation, quality assessment, as well as downstream classification and segmentation tasks. Additionally, it implements end-to-end comparison with multiple state-of-the-art generation methods including ArSDM, ControlNet, T2I-Adapter, DreamBooth, DFMGAN, LesionGen, Derm-T2IM, LF-VAR, Siamese Diffusion, and Skin-Disease-Diffusion.
 
 ---
 
-## Directory Conventions (Default Paths)
+## Directory Conventions (Default Paths) 📁
 
 | Purpose | Path |
 |---------|------|
@@ -15,7 +15,7 @@ This repository presents **DFTA (Dual Flow Transformation Architecture)**, a nov
 
 ---
 
-## Core Academic and Visual Content
+## Core Academic and Visual Content 📊
 
 
 
@@ -27,7 +27,20 @@ This repository presents **DFTA (Dual Flow Transformation Architecture)**, a nov
 
 
 ---
-## Quick Start
+
+## Pretrained Models 🤖
+
+We provide pretrained weights and a fully trained model (10000 steps) for one-click download:
+
+🔗 **Model Hub**: [https://huggingface.co/yanguanyue/DFTA-10000-steps](https://huggingface.co/yanguanyue/DFTA-10000-steps)
+
+The model includes:
+- **Pretrained weights**: `PRETRAINED/merged_pytorch_model.pth` (from Siamese polyp model)
+- **Trained checkpoint**: `lightning_logs/version_4/checkpoints/last.ckpt` (10000 steps)
+
+---
+
+## Quick Start ⚡
 
 ```bash
 # Environment
@@ -50,7 +63,7 @@ bash scripts/run_classifier.sh
 bash scripts/run_segmentation.sh
 ```
 
-## 1. Environment Setup
+## 1. Environment Setup 🛠️
 
 ### 1.1 Create Conda Environment
 
@@ -96,7 +109,7 @@ conda activate flow
 
 ---
 
-## 2. Data Download
+## 2. Data Download 📥
 
 Download and prepare the HAM10000 dataset using the provided script.
 
@@ -130,7 +143,7 @@ The dataset contains 7 skin lesion classes:
 
 ---
 
-## 3. Data Preprocessing
+## 3. Data Preprocessing 🔧
 
 ### 3.1 Hair Removal (DullRazor)
 
@@ -144,7 +157,7 @@ This processes images in `data/HAM10000/input` for cleaner generation inputs.
 
 ---
 
-## 4. Flow Model Training
+## 4. Flow Model Training 🚀
 
 Flow-Matching (ControlLDM) training and generation pipeline using `scripts/compare_Main.sh`.
 
@@ -215,7 +228,7 @@ TRAIN_ENABLED=false USE_PRETRAINED=1 bash scripts/compare_Main.sh
 
 ---
 
-## 5. Comparison Model Training
+## 5. Comparison Model Training 📈
 
 Ten comparison models are available for benchmarking. Each has a one-click training + generation script.
 
@@ -265,7 +278,7 @@ MAX_TRAIN_STEPS=10000 NUM_IMAGES_PER_CLASS=500 bash scripts/compare_<Model>.sh
 
 ---
 
-## 6. Medical Text Prompts
+## 6. Medical Text Prompts 💬
 
 Some comparison models (e.g., ControlNet, T2I-Adapter) require text prompts for generation. This project provides pre-generated prompts for all HAM10000 classes.
 
@@ -301,7 +314,7 @@ This will:
 
 ---
 
-## 7. Basic Metrics Evaluation
+## 7. Basic Metrics Evaluation 📊
 
 Evaluate generation quality using multiple metrics.
 
@@ -311,10 +324,6 @@ Evaluate generation quality using multiple metrics.
 |--------|-------------|
 | KID | Kernel Inception Distance |
 | Density & Coverage | Distribution coverage metrics |
-| MS-SSIM | Multi-Scale Structural Similarity |
-| LPIPS | Learned Perceptual Image Patch Similarity |
-| Inception Score | Generation quality score |
-| Vendi | Diversity score |
 
 ### 7.1 Run Metrics
 
@@ -349,7 +358,7 @@ Set `TORCH_HOME=/root/autodl-tmp/model` to cache models.
 
 ---
 
-## 8. Downstream Classification
+## 8. Downstream Classification 🔬
 
 Train and evaluate classification models on generated images.
 
@@ -386,7 +395,7 @@ bash scripts/run_classifier.sh
 
 ---
 
-## 9. Downstream Segmentation
+## 9. Downstream Segmentation 🩺
 
 Train and evaluate segmentation models on generated images.
 
@@ -418,7 +427,7 @@ bash scripts/run_segmentation.sh
 
 ---
 
-## 10. Open Source and Academic Standards
+## 10. Open Source and Academic Standards 🌐
 
 
 
