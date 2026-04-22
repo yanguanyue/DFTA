@@ -13,13 +13,24 @@
       "paired": 28,
       "missing": 1472,
       "metrics": {
-        "kid_mean": 0.1860847920179367,
-        "density_inception": 0.06666667014360428,
-        "coverage_inception": 0.0833333358168602
+        "kid_mean": 0.15039949119091034,
+        "density_inception": 0.1071428656578064,
+        "coverage_inception": 0.1785714328289032
       }
     },
     "bcc": {
-      "error": "Need at least 6 samples for D&C, got 1"
+      "gen_dir": "/root/autodl-tmp/output/generate/Derm-T2IM/bcc",
+      "real_img_dir": "/root/autodl-tmp/data/HAM10000/input/val/HAM10000_img_class/bcc",
+      "mode": "full",
+      "total_generated": 1500,
+      "limit": null,
+      "paired": 49,
+      "missing": 1451,
+      "metrics": {
+        "kid_mean": 0.11976654082536697,
+        "density_inception": 0.07755102217197418,
+        "coverage_inception": 0.20408162474632263
+      }
     },
     "bkl": {
       "gen_dir": "/root/autodl-tmp/output/generate/Derm-T2IM/bkl",
@@ -30,9 +41,9 @@
       "paired": 93,
       "missing": 1407,
       "metrics": {
-        "kid_mean": 0.08907730132341385,
-        "density_inception": 0.5538461804389954,
-        "coverage_inception": 0.8461538553237915
+        "kid_mean": 0.0869138315320015,
+        "density_inception": 0.13333332538604736,
+        "coverage_inception": 0.31182795763015747
       }
     },
     "df": {
@@ -44,7 +55,7 @@
       "paired": 10,
       "missing": 1490,
       "metrics": {
-        "kid_mean": 0.08676864951848984,
+        "kid_mean": 0.08678224682807922,
         "density_inception": 0.3400000035762787,
         "coverage_inception": 0.699999988079071
       }
@@ -58,9 +69,9 @@
       "paired": 124,
       "missing": 1376,
       "metrics": {
-        "kid_mean": 0.0971154049038887,
-        "density_inception": 0.5833333730697632,
-        "coverage_inception": 0.6666666865348816
+        "kid_mean": 0.048692163079977036,
+        "density_inception": 0.33225807547569275,
+        "coverage_inception": 0.5161290168762207
       }
     },
     "nv": {
@@ -72,9 +83,9 @@
       "paired": 681,
       "missing": 819,
       "metrics": {
-        "kid_mean": 0.1362641602754593,
-        "density_inception": 0.4444444477558136,
-        "coverage_inception": 1.0
+        "kid_mean": 0.10589418560266495,
+        "density_inception": 0.15535975992679596,
+        "coverage_inception": 0.11306901276111603
       }
     },
     "vasc": {
@@ -86,15 +97,15 @@
       "paired": 16,
       "missing": 1484,
       "metrics": {
-        "kid_mean": 0.048812009394168854,
+        "kid_mean": 0.04881511256098747,
         "density_inception": 0.25,
         "coverage_inception": 0.875
       }
     }
   },
   "summary": {
-    "kid_mean": 0.10735371708869934,
-    "density_inception": 0.37304845452308655,
-    "coverage_inception": 0.6951923370361328
+    "kid_mean": 0.09246622025966644,
+    "density_inception": 0.1993778645992279,
+    "coverage_inception": 0.41409704089164734
   }
 }

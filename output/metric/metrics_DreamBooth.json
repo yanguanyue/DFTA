@@ -13,13 +13,24 @@
       "paired": 28,
       "missing": 1472,
       "metrics": {
-        "kid_mean": 0.22900159657001495,
-        "density_inception": 0.0833333358168602,
-        "coverage_inception": 0.1666666716337204
+        "kid_mean": 0.1789349764585495,
+        "density_inception": 0.2071428745985031,
+        "coverage_inception": 0.3571428656578064
       }
     },
     "bcc": {
-      "error": "Need at least 6 samples for D&C, got 1"
+      "gen_dir": "/root/autodl-tmp/output/generate/DreamBooth/bcc",
+      "real_img_dir": "/root/autodl-tmp/data/HAM10000/input/val/HAM10000_img_class/bcc",
+      "mode": "full",
+      "total_generated": 1500,
+      "limit": null,
+      "paired": 49,
+      "missing": 1451,
+      "metrics": {
+        "kid_mean": 0.14735345542430878,
+        "density_inception": 0.11836735159158707,
+        "coverage_inception": 0.1428571343421936
+      }
     },
     "bkl": {
       "gen_dir": "/root/autodl-tmp/output/generate/DreamBooth/bkl",
@@ -30,9 +41,9 @@
       "paired": 93,
       "missing": 1407,
       "metrics": {
-        "kid_mean": 0.04854794591665268,
-        "density_inception": 0.8769230842590332,
-        "coverage_inception": 1.0
+        "kid_mean": 0.07728550583124161,
+        "density_inception": 0.32043012976646423,
+        "coverage_inception": 0.4838709533214569
       }
     },
     "df": {
@@ -44,7 +55,7 @@
       "paired": 10,
       "missing": 1490,
       "metrics": {
-        "kid_mean": 0.052370212972164154,
+        "kid_mean": 0.05235782638192177,
         "density_inception": 1.0,
         "coverage_inception": 1.0
       }
@@ -58,9 +69,9 @@
       "paired": 124,
       "missing": 1376,
       "metrics": {
-        "kid_mean": 0.29453587532043457,
-        "density_inception": 0.21666666865348816,
-        "coverage_inception": 0.1666666716337204
+        "kid_mean": 0.11464482545852661,
+        "density_inception": 0.47580647468566895,
+        "coverage_inception": 0.4274193346500397
       }
     },
     "nv": {
@@ -72,29 +83,29 @@
       "paired": 681,
       "missing": 819,
       "metrics": {
-        "kid_mean": 0.01985218934714794,
-        "density_inception": 0.9555556178092957,
-        "coverage_inception": 1.0
+        "kid_mean": 0.07797963172197342,
+        "density_inception": 0.4954478442668915,
+        "coverage_inception": 0.38032305240631104
       }
     },
     "vasc": {
       "gen_dir": "/root/autodl-tmp/output/generate/DreamBooth/vasc",
       "real_img_dir": "/root/autodl-tmp/data/HAM10000/input/val/HAM10000_img_class/vasc",
       "mode": "full",
-      "total_generated": 1500,
+      "total_generated": 328,
       "limit": null,
       "paired": 16,
-      "missing": 1484,
+      "missing": 312,
       "metrics": {
-        "kid_mean": 0.06894197314977646,
-        "density_inception": 0.612500011920929,
+        "kid_mean": 0.06895901262760162,
+        "density_inception": 0.6124999523162842,
         "coverage_inception": 0.9375
       }
     }
   },
   "summary": {
-    "kid_mean": 0.11887496709823608,
-    "density_inception": 0.6241630911827087,
-    "coverage_inception": 0.711805522441864
+    "kid_mean": 0.10250218212604523,
+    "density_inception": 0.46138495206832886,
+    "coverage_inception": 0.5327304601669312
   }
 }
