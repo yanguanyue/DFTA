@@ -83,23 +83,17 @@ if [ "$COMPARE_MAIN" = true ]; then
 
   echo "[Stage] Generating images with inference.py (per class=${NUM_IMAGES_PER_CLASS})..."
   "$PYTHON" "$ROOT_PATH/main/inference.py" \
-      --ckpt "$LATEST_CKPT" \
-      --prompt-json "$PROMPT_JSON" \
-      --output-root "$OUTPUT_ROOT" \
-      --class-list "$CLASS_LIST" \
-      --num-per-class "$NUM_IMAGES_PER_CLASS" \
-      --batch-size "$BATCH_SIZE" \
-      --num-workers "$NUM_WORKERS" \
-      --ddim-steps "$DDIM_STEPS" \
-      --device "cuda" \
-      --image-size 512
-
-  echo "[Stage] Generating images with generate.py (per class=${NUM_IMAGES_PER_CLASS})..."
-  "$PYTHON" "$ROOT_PATH/main/generate.py" \
-      --checkpoint_path "$LATEST_CKPT" \
-      --output_root "$OUTPUT_ROOT" \
-      --target_per_class "$NUM_IMAGES_PER_CLASS" \
-      --steps "$DDIM_STEPS" \
-      --device "cuda"
+    --ckpt "$LATEST_CKPT" \
+    --prompt-json "$PROMPT_JSON" \
+    --output-root "$OUTPUT_ROOT" \
+    --class-list "$CLASS_LIST" \
+    --num-per-class "$NUM_IMAGES_PER_CLASS" \
+    --batch-size "$BATCH_SIZE" \
+    --num-workers "$NUM_WORKERS" \
+    --ddim-steps "$DDIM_STEPS" \
+    --device "cuda" \
+    --image-size 512 \
+    --stochastic \
+    --noise-scale 0.1
   fi
 fi
