@@ -98,8 +98,8 @@ class FlowMatchingControlLDM(ControlLDM):
         loss_simple_image_value = None
         loss_simple_mask_2_image_value = None
         loss_simple_mask_regularization_value = None
-        loss_trajectory_consistency = None
-        loss_trajectory_consistency_value = None
+        loss_trajectory_alignment = None
+        loss_trajectory_alignment_value = None
         loss_online_aug = None
         loss_online_aug_value = None
 
@@ -130,13 +130,13 @@ class FlowMatchingControlLDM(ControlLDM):
             if trajectory_detach_image:
                 x0_hat_image = x0_hat_image.detach()
 
-            loss_trajectory_consistency = self.get_loss(
+            loss_trajectory_alignment = self.get_loss(
                 x0_hat_mask,
                 x0_hat_image,
                 mean=False,
             ).mean([1, 2, 3])
-            loss_trajectory_consistency_value = loss_trajectory_consistency.mean().item()
-            loss_simple = loss_simple + trajectory_weight * loss_trajectory_consistency
+            loss_trajectory_alignment_value = loss_trajectory_alignment.mean().item()
+            loss_simple = loss_simple + trajectory_weight * loss_trajectory_alignment
 
 
         online_aug_weight = float(getattr(self, "online_aug_weight", 0.0))
@@ -183,15 +183,15 @@ class FlowMatchingControlLDM(ControlLDM):
                     f"loss_simple_image={loss_simple_image_value if loss_simple_image_value is not None else 'NA'} "
                     f"loss_simple_mask_2_image={loss_simple_mask_2_image_value if loss_simple_mask_2_image_value is not None else 'NA'} "
                     f"loss_simple_mask_regularization={loss_simple_mask_regularization_value if loss_simple_mask_regularization_value is not None else 'NA'} "
-                    f"loss_trajectory_consistency={loss_trajectory_consistency_value if loss_trajectory_consistency_value is not None else 'NA'} "
+                    f"loss_trajectory_alignment={loss_trajectory_alignment_value if loss_trajectory_alignment_value is not None else 'NA'} "
                     f"loss_online_aug={loss_online_aug_value if loss_online_aug_value is not None else 'NA'}\n"
                 )
         except Exception:
             pass
 
         loss_dict.update({f'{prefix}/loss_simple': loss_simple.mean()})
-        if loss_trajectory_consistency is not None:
-            loss_dict.update({f'{prefix}/loss_trajectory_consistency': loss_trajectory_consistency.mean()})
+        if loss_trajectory_alignment is not None:
+            loss_dict.update({f'{prefix}/loss_trajectory_alignment': loss_trajectory_alignment.mean()})
         if loss_online_aug is not None:
             loss_dict.update({f'{prefix}/loss_online_aug': loss_online_aug.mean()})
 
