@@ -140,12 +140,11 @@ class FlowMatchingControlLDM(ControlLDM):
 
 
         online_aug_weight = float(getattr(self, "online_aug_weight", 0.0))
-        online_aug_start_step = int(getattr(self, "online_aug_start_step", 0))
         online_aug_detach_pseudo = bool(getattr(self, "online_aug_detach_pseudo", True))
         if (
             online_aug_weight > 0.0
             and model_output_image is not None
-            and int(getattr(self, "global_step", 0)) >= online_aug_start_step
+            and int(getattr(self, "global_step", 0)) > (self.trainer.max_steps * 1 / 3)
         ):
             t_view = _expand_time(t, x_t)
             x0_hat_image = x_t - t_view * model_output_image
