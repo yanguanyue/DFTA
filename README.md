@@ -4,6 +4,15 @@ This repository presents **DFTA (Dual Flow Transformation Architecture)**, a nov
 
 ---
 
+## 🏗️ Architecture Overview
+
+<p align="center">
+<img src="image/DFTA Architecture Overview.png" alt="DFTA Architecture Overview" width="900"/>
+</p>
+<p align="center"><em>Figure: Dual-Flow Trajectory Alignment (DFTA) architecture — parallel Image-Flow and Mask-Flow paths with trajectory consistency guidance and Online Straight Euler Augmentation.</em></p>
+
+---
+
 ## Directory Conventions (Default Paths) 📁
 
 | Purpose | Path |
@@ -17,13 +26,35 @@ This repository presents **DFTA (Dual Flow Transformation Architecture)**, a nov
 
 ## Core Academic and Visual Content 📊
 
+### 🔑 Key Achievements
 
+| Task | Metric | DFTA (Ours) | Best Baseline | Improvement |
+|------|--------|-------------|---------------|-------------|
+| **Generation Quality** | KID ↓ | **0.04** | 0.09 (Derm-T2IM) | **55.6%** |
+| | Density ↑ | **0.59** | 0.57 (Controlnet) | **3.5%** |
+| | Coverage ↑ | **0.74** | 0.56 (ArSDM) | **32.1%** |
+| **Classification** (ResNet50) | Acc ↑ | **87.4%** | 86.6% (Derm-T2IM) | **+1.9%** |
+| **Classification** (EfficientNet-B0) | Acc ↑ | **84.3%** | 84.0% (T2I-Adapter) | **+0.9%** |
+| **Segmentation** (SegFormer) | mDice / mIoU | **93.85 / 89.07** | 93.81 / 89.03 (T2I-Adapter) | **+1.36% / +2.21%** |
+| **Segmentation** (UNet) | mDice / mIoU | **89.09 / 82.06** | 88.75 / 81.50 (T2I-Adapter) | **+1.51% / +2.35%** |
 
+### 📈 Quantitative Analysis: Fidelity vs. Diversity Trade-off
 
+The figure below illustrates the performance comparison across all evaluated models on HAM10000 dataset. DFTA achieves the **optimal balance** between structural fidelity (Density) and sample diversity (Coverage), with the **lowest KID score** (darkest color), indicating minimal distribution discrepancy from real data.
 
+<p align="center">
+<img src="image/Quantitative Performance Comparison.png" alt="Quantitative Performance Comparison" width="650"/>
+</p>
+<p align="center"><em>Figure: Performance scatter plot on HAM10000 — DFTA occupies the top-right corner (highest fidelity & diversity) with the lowest KID.</em></p>
 
+### 🖼️ Qualitative Analysis: Visual Comparison Across Methods
 
+Qualitative results demonstrate DFTA's superior capability in modeling complex dermatopathological structures while preserving fine-grained local texture details. Compared to baseline methods, DFTA maintains better morphological consistency, generates more coherent pathological textures, and achieves a superior balance between local details and global anatomy.
 
+<p align="center">
+<img src="image/Qualitative Comparison of Generated Skin Lesion Images.png" alt="Qualitative Comparison of Generated Skin Lesion Images" width="900"/>
+</p>
+<p align="center"><em>Figure: Qualitative comparison across methods and lesion categories. Methods marked with (M) use lesion masks as input. DFTA produces the most realistic and structurally consistent results.</em></p>
 
 
 ---
