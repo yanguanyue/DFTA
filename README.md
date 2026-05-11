@@ -92,6 +92,19 @@ bash scripts/run_classifier.sh
 
 # 5. Train downstream segmentation
 bash scripts/run_segmentation.sh
+
+# 6. Cross-dataset evaluation (ISIC2017/PH2)
+bash scripts/crossdataset/valid_dataset_downloader.sh
+bash scripts/crossdataset/run_isic2017_classifier.sh
+bash scripts/crossdataset/run_isic2017_segmentation.sh
+bash scripts/crossdataset/run_ph2_classifier.sh
+bash scripts/crossdataset/run_ph2_segmentation.sh
+
+# 7. Ablation study
+bash scripts/ablation/run_ablation_experiments.sh all
+bash scripts/ablation/run_metric_ablation.sh
+bash scripts/ablation/run_classifier_ablation.sh
+bash scripts/ablation/run_segmentation_ablation.sh
 ```
 
 ## 1. Environment Setup 🛠️
@@ -458,7 +471,101 @@ bash scripts/run_segmentation.sh
 
 ---
 
-## 10. Open Source and Academic Standards 🌐
+## 10. Cross-Dataset Evaluation 🌍
+
+Evaluate generalization on ISIC2017 and PH2 datasets (classification + segmentation).
+
+### 10.1 Download & Prepare Validation Datasets
+
+```bash
+bash scripts/crossdataset/valid_dataset_downloader.sh
+```
+
+This script downloads ISIC2017 and PH2, then prepares resized images and class folders under:
+- `data/ISIC2017/input/ISIC2017_img`, `data/ISIC2017/input/ISIC2017_seg`
+- `data/PH2/input/PH2_img`, `data/PH2/input/PH2_seg`
+
+Optional hair removal:
+```bash
+bash scripts/crossdataset/run_dullrazor_isic2017.sh
+bash scripts/crossdataset/run_dullrazor_ph2.sh
+```
+
+### 10.2 Run Cross-Dataset Classification
+
+```bash
+bash scripts/crossdataset/run_isic2017_classifier.sh
+bash scripts/crossdataset/run_ph2_classifier.sh
+```
+
+### 10.3 Run Cross-Dataset Segmentation
+
+```bash
+bash scripts/crossdataset/run_isic2017_segmentation.sh
+bash scripts/crossdataset/run_ph2_segmentation.sh
+```
+
+---
+
+## 11. Ablation Study 🧪
+
+Run ablation training, generation, and evaluation on the DFTA variants.
+
+### 11.0 Ablation Configurations (3 Comparison Settings)
+
+The three comparison settings are defined in `scripts/ablation/run_ablation_experiments.sh` and come from:
+
+1. **Model A (Single-Flow)** — trained in ablation stage
+	- **Architecture**: Mask-Flow only (no Image-Flow fusion)
+	- **Components removed**: Image-Flow branch, OSEA augmentation
+	- **Purpose**: isolate the contribution of the Image-Flow path
+
+2. **Model B (Dual-Flow No Aug)** — trained in ablation stage
+	- **Architecture**: Dual-Flow with trajectory alignment
+	- **Components removed**: OSEA augmentation only
+	- **Purpose**: isolate the contribution of OSEA while keeping dual-flow alignment
+
+3. **Full DFTA (Pretrained)** — reused from the main training
+	- **Architecture**: Dual-Flow + trajectory alignment + OSEA
+	- **Source**: `checkpoint/flow/` (existing full model)
+	- **Purpose**: full model baseline for comparison
+
+These map to the three generation modes:
+- **Mode 1**: Model A + CSFS stochastic sampling
+- **Mode 2**: Model B + CSFS stochastic sampling
+- **Mode 3**: Full DFTA + deterministic sampling
+
+### 11.1 Train & Generate Ablation Variants
+
+```bash
+bash scripts/ablation/run_ablation_experiments.sh all
+```
+
+Common options:
+- `TEST_MODE=1` (quick test)
+- `TRAIN_ENABLED=false` (skip training)
+- `NUM_IMAGES_PER_CLASS=1500`
+
+### 11.2 Ablation Metrics
+
+```bash
+bash scripts/ablation/run_metric_ablation.sh
+```
+
+### 11.3 Ablation Downstream Tasks
+
+```bash
+bash scripts/ablation/run_classifier_ablation.sh
+bash scripts/ablation/run_segmentation_ablation.sh
+```
+
+Outputs are saved under:
+- `output/ablation/` (generated images)
+- `output/ablation/metric/` (metrics, classifier, segmentation)
+
+---
+
+## 12. Open Source and Academic Standards 🌐
 
 
 
